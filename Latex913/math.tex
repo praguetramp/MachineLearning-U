@@ -1,0 +1,65 @@
+\documentclass[UTF8]{ctexart}
+\title{Proof of Asymptotic Analysis of Algorithm Time Complexity}
+\author{Scse,Uestc,Chengdu,China,Jianghong Huang}
+\CTEXoptions[today=old]
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+In the field of computer science, we encounter various algorithms 
+that assist in solving specific practical problems. During this stage, 
+it is common to analyze the asymptotic expression of the algorithm in terms of time 
+and space complexity to measure its efficiency.
+
+
+
+\section{Question}
+Please prove the expression ?$\mathbf {O \left ( f\left ( n \right )   + g\left (  n\right ) \right ) =  O\left ( \max \left \{ f\left ( n \right ), g\left ( n \right )   \right \}  \right )}$,
+where $f\left ( n \right )$ and $g\left ( n \right )$  are two functions with respect to n. For any n in natural numbers, $f(n) \geq 0$ and $g(n) \geq 0$.
+
+\section{Assumptions}
+For any  $f_1(n)\in O(f(n))$, there exists positive constant $c_1$ and a natural number $n_1$ such that for any $n \geq  n_1$, $0\leq f_1(n)\leq c_1\times f(n)$.
+
+
+Similarly,it can  be derived that for any $g_1(n)\in O (g(n))$,there exists positive constant $c_2$ and a natural number $n_2$ such that for any $n\geq n_2$ ,$0\leq g_1(n)\leq c_2\times g(n)$.
+
+
+Now let's assume that $c_3 = \max \left \{ c_1,c_2 \right \} , c_4 \geq c_3, n_3 =\max \left \{ n_1,n_2 \right \}$,and  $h(n) = \max \left \{ f(n),g(n) \right \} $.
+
+
+\section{Proof}
+Based on the above assumptions, for any $n \geq n_3$, we have
+\begin{eqnarray} 
+g_1(n)+f_1(n) &\le& c_1\times f(n)+c_2\times g(n)   \\ 
+&\le& c_3\times f(n)+c_3\times g(n) \nonumber \\
+&=& c_3\times\left ( f(n)+g(n) \right ) 
+\end{eqnarray}
+
+
+According to the definition of asymptotic upper bound, when $c_4\geq c_3$, the following expression holds.
+\begin{eqnarray}
+0\le c_3\times \left ( f(n)+g(n) \right )\le c_4\times  \left ( f(n)+g(n) \right ) 
+\end{eqnarray}
+
+
+From expression (3), we obtain $O ( f(n)+g(n))$.Therefore, for all natural numbers n, when $n \geq n_4$, we could deduce that
+\begin{eqnarray}
+c_4\times  \left ( f(n)+g(n) \right ) &\le& 2\times c_4\times \max \left \{ f(n),g(n) \right \}  \\
+&=&2\times c_4 \times h(n)   \\
+&=&O \left ( \max \left \{ f(n),g(n) \right \}  \right ) 
+\end{eqnarray}
+
+
+In the above steps, we employed the arithmetic operation expression $O \left ( cf(n) \right )  = O (f(n))$ in asymptotic analysis to facilitate the derivation of expression (6) from expression (5).
+
+
+Since we have shown that any function in $O \left ( f(n)+g(n) \right )$  is also in $O \left ( \max \left \{ f(n),g(n) \right \}  \right )$  and vice versa,
+we can conclude that $O \left ( f(n)+g(n) \right )=  O \left ( \max \left \{ f(n),g(n) \right \}  \right ) $.
+
+
+Therefore, the given statement has been proven.
+\section{Conclusion}
+Based on the preceding proof steps,we state the final conclusion that the sum of two polynomial complexities belongs to the maximum polynomial complexity among them.
+\end{document}
